@@ -20,6 +20,29 @@ class User(UserBase):
 class UserUpdate(BaseModel):
     email: str
 
+class DeviceBase(BaseModel):
+    id:int
+    name: str
+    ip: str
+    mac: str
+    type: str
+    install: str
+    serial_no: str
+    model: str
+    status: str
+
+class DeviceCreate(DeviceBase):
+    pass
+    
+    
+
+class Device(DeviceBase):    
+    create_dt: datetime
+    class Config:
+        orm_mode: True
+
+
+
 
 class CameraBase(BaseModel):    
     id: int

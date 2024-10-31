@@ -83,6 +83,8 @@ async def reset_password(email: str, password: str, db: Session = Depends(get_db
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="The user not found")
     await services.update_password(db,db_user,password)
 
-                            
+@router.get("/")
+async def root():
+    return {"message": "Hello World"}         
 
 # 594416

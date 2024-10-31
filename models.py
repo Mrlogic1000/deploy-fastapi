@@ -22,15 +22,18 @@ class RessetPassword(Base):
     email = Column(String, primary_key=True, index=True)
     code = Column(String)
 
-# class Device(Base):
-#     __tablename__ = "devices"
-#     id = Column(Integer, primary_key=True)
-#     name = Column(String, index=True)
-#     ip = Column(index=True)
-#     type= Column(index=True)
-#     install = Column(String)
-#     serial = Column(String)
-#     model  = Column(String)
+class Device(Base):
+    __tablename__ = "devices"
+    id = Column(Integer, primary_key=True)
+    name = Column(String,unique=True, index=True)
+    ip = Column(String,unique=True,index=True)
+    mac = Column(String,unique=True,index=True)
+    type= Column(String)
+    install = Column(String)
+    serial_no = Column(String)
+    model  = Column(String)
+    status  = Column(String)
+    create_dt = Column(DateTime, default=datetime.utcnow())
 
 # class Camera(Base):
 #     __tablename__ = "cameras"
