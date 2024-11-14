@@ -1,6 +1,7 @@
 from typing import List, Optional
 from database import Base
-from sqlalchemy import Column, Integer, String, DateTime, Boolean
+from sqlalchemy import Column, Integer, String, DateTime, Boolean, ForeignKey
+from sqlalchemy.orm import relationship
 from datetime import datetime
 
 
@@ -34,6 +35,17 @@ class Device(Base):
     model  = Column(String)
     status  = Column(String)
     create_dt = Column(DateTime, default=datetime.utcnow())
+    # ports = relationship('Port', back_populates='ports')
+
+
+# class Port(Base):
+#     __tablename__ = "ports"
+#     id = Column(Integer, primary_key=True)
+#     name = Column(String, unique=True, index=True)
+#     type = Column(String)
+#     neibor = Column(String)
+#     device_id = Column(Integer, ForeignKey("devices_id"))
+#     owner = relationship('Device', back_populates='ports')
 
 # class Camera(Base):
 #     __tablename__ = "cameras"

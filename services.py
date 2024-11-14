@@ -49,6 +49,8 @@ async def existing_user(db:Session, username: str, email:str):
     if db_user:
         return db_user
     return None
+
+
     
 
 async def authenticate(db: Session, username: str, password: str):

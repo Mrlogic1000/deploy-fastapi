@@ -20,8 +20,7 @@ class User(UserBase):
 class UserUpdate(BaseModel):
     email: str
 
-class DeviceBase(BaseModel):
-    id:int
+class DeviceBase(BaseModel):   
     name: str
     ip: str
     mac: str
@@ -33,10 +32,30 @@ class DeviceBase(BaseModel):
 
 class DeviceCreate(DeviceBase):
     pass
+class DeviceUpdate(DeviceBase):
+    pass
     
     
+# class PortBase(BaseModel):    
+#     name: str
+#     type: str
+#     neigbor: str 
+   
 
-class Device(DeviceBase):    
+# class PortCreate(PortBase):
+#     owner_id: int
+
+
+# class PortList(PortBase):
+#     id:int
+#     device_id: str
+    # owner: Device
+    # class Config:
+    #     orm_mode: True
+
+class Device(DeviceBase): 
+    id:int 
+    # port: list[PortList]  = []
     create_dt: datetime
     class Config:
         orm_mode: True
@@ -44,18 +63,3 @@ class Device(DeviceBase):
 
 
 
-class CameraBase(BaseModel):    
-    id: int
-    location: str
-    ip: str
-    mac: str
-    status: str | None= None
-    serial: str
-    model: str
-
-class CameraCreate(CameraBase):
-    pass
-
-class Camera(CameraBase):
-    class Config:
-        orm_mode: True
